@@ -53,3 +53,15 @@ ORDER BY event_time_m ASC ;
         y=count_batches>
     </LineChart>
 
+
+```prom node_cpu_seconds_total 
+100 - avg(irate(node_cpu_seconds_total[5m])) by (instance, mode) * 100
+```
+
+<StackedLineChart
+    title='Node CPU Total'
+    data={node_cpu_seconds_total}
+    format='percentage'
+    >
+</StackedLineChart>
+
