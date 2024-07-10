@@ -1,4 +1,4 @@
-title: "Table Default"
+title: "Table Default ( Test Dashboard )"
 model: "products"
 timeseries: "_timestamp_ms"
 
@@ -11,8 +11,12 @@ measures:
     expression: "count(distinct(_batch_base_offset))"
     name: Number of batches
     format_preset: humanize
-  - label: "Number of duplicate messages"
+  - label: "Number of distinct messages"
     expression: "count(distinct(_checksum))"
+    name: Number of distinct messsage
+    format_preset: humanize
+  - label: "Number of duplicate messages"
+    expression: "count(*) - count(distinct(_checksum))"
     name: Number of duplicate messsage
     format_preset: humanize
   - label: "Number of Compression"
