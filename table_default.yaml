@@ -23,9 +23,9 @@ measures:
     expression: "count(distinct(_batch_compression_type))"
     name: Number of Compression
     format_preset: humanize
-  - label: "Avarage batches size"
+  - label: "Average batches size"
     expression: "avg(_batch_size)"
-    name: Avarage batches size
+    name: Average batches size
     format_preset: humanize
   
 dimensions:
