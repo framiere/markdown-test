@@ -1,54 +1,39 @@
-title: "Table Default ( Test Dashboard )"
-model: "metrics_monitoring"
-timeseries: "__time"
+title: "Table Default"
+model: "products"
+timeseries: "_timestamp_ms"
+
 measures:
-  - label: "Total Cost"
-    expression: "SUM(cost)"
-    name: measure
-    description: "The sum of cost"
-    format_preset: currency_usd
-  - label: "Total Revenue"
-    expression: SUM(revenue)
-    name: total_records
-    description: The sum of revenue
-    format_preset: currency_usd
-  - label: "Net Revenue"
-    expression: "SUM(revenue) - SUM(cost)"
-    name: measure_2
-    description: "The sum of revenue minus the sum of cost"
-    format_preset: currency_usd
-  - label: "Gross Margin %"
-    expression: "(SUM(revenue) - SUM(cost))/SUM(revenue)"
-    name: measure_1
-    description: "Net revenue divided by sum of revenue"
-    format_preset: percentage
-  - label: "Unique Customers"
-    expression: "COUNT(DISTINCT company)"
-    name: measure_3
-    description: "The count of unique companies"
+  - label: "Number of elements"
+    expression: "count(*)"
+    name: total
     format_preset: humanize
+  - label: "Number of batches"
+    expression: "count(distinct(_batch_base_offset))"
+    name: Number of batches
+    format_preset: humanize
+  - label: "Number of duplicate messages"
+    expression: "count(distinct(_checksum))"
+    name: Number of duplicate messsage
+    format_preset: humanize
+  - label: "Number of Compression"
+    expression: "count(distinct(_batch_compression_type))"
+    name: Number of Compression
+    format_preset: humanize
+  - label: "Avarage batches size"
+    expression: "avg(_batch_size)"
+    name: Avarage batches size
+    format_preset: humanize
+  
 dimensions:
-  - label: Customer
-    column: company
-    description: "The name of the customer"
-  - label: Plan Name
-    column: plan_name
-    description: "The name of the billing plan"
-  - label: "Cost by Region"
-    column: "location"
-    description: "The region incurring costs"
-  - label: Cost by Component
-    column: component
-    description: "The component generating costs"
-  - label: "Cost by App Name"
-    column: "app_name"
-    description: "The app generating costs"
-  - label: "Cost by SKU"
-    column: "sku_description"
-    description: "The sku description for costs"
-  - label: "Cost by Data Pipeline"
-    column: "pipeline"
-    description: "The pipeline incurring costs"
-  - label: "Cost by Environment"
-    column: "environment"
-    description: "The environment incurring costs"
+  - label: Partition
+    column: _partition
+    description: "per partition"
+  - label: Schema (when applies)
+    column: _value_schema_id
+    description: "per schema"
+  - label: Transaction
+    column: _batch_transactional
+    description: "transaction"
+  - label: Compression Type
+    column: _batch_compression_type
+    description: "by Compression type"
