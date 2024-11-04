@@ -1,6 +1,6 @@
 title: "Table Default ( Test Dashboard )"
 model: "$topic"
-timeseries: "_timestamp_ms"
+timeseries: "__timestamp"
 
 measures:
   - label: "Number of elements"
