@@ -1,0 +1,14 @@
+title: "Table Default ( Test Dashboard )"
+model: "$topic"
+timeseries: "__timestamp"
+
+measures:
+  - label: "Number of elements"
+    expression: "count(*)"
+    name: total
+    format_preset: humanize
+  
+dimensions:
+  - label: Partition
+    column: __partition
+    description: "per partition"
