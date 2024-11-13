@@ -1,5 +1,5 @@
 title: "Customer Unit Economics Dashboard"
-model: "metrics_monitoring"
+model: "customer-metrics"
 timeseries: "__time"
 measures:
   - label: "Total Cost"
