@@ -18,7 +18,7 @@ measures:
     description: "The sum of revenue minus the sum of cost"
     format_preset: currency_usd
   - label: "Gross Margin %"
-    expression: "CASE WHEN SUM(revenue) = 0 THEN NULL WHEN ABS(SUM(revenue)) < 1 THEN 1 ELSE (SUM(revenue) - SUM(cost)) / SUM(revenue) END"
+    expression: "CASE WHEN SUM(revenue) = 0 THEN 0 WHEN ABS(SUM(revenue)) < 1 THEN 1 ELSE (SUM(revenue) - SUM(cost)) / SUM(revenue) END"
     name: measure_1
     description: "Net revenue divided by sum of revenue"
     format_preset: percentage
